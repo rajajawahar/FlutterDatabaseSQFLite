@@ -31,13 +31,19 @@ class DBHelper{
     print("Created tables");
   }
 
-Future<int> saveUser(Employee employee) async {
+Future<int> saveEmployee(Employee employee) async {
     var dbClient = await db;
     await dbClient.transaction((txn) async {
     return await txn.rawInsert(
-  'INSERT INTO Employee(firstname, lastname, mobileno, emailid ) VALUES('+'\''+ employee.firstName+ '\''+','+'\''+ employee.lastName+'\''+ '\''
+  'INSERT INTO Employee(firstname, lastname, mobileno, emailid ) VALUES('+'\''+ employee.firstName+ '\''+','+'\''+ 
+  employee.lastName+'\''+','+ '\''
   +employee.mobileNo+ '\''+','+ '\'' + employee.emailId + '\''+')');
 });
+}
+
+void getEmployees() async{
+  var dbClient = await db;
+  List<Map> list = await dbClient.rawQuery('SELECT * FROM Employee');
 }
 
 }

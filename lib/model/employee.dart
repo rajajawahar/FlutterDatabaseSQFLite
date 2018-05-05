@@ -7,13 +7,11 @@ class Employee{
   
   Employee(this.firstName, this.lastName,this.mobileNo,this.emailId);
   
-
-  Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-    map["firstname"] = firstName;
-    map["lastname"] = lastName;
-    map["mobileno"] = mobileNo;
-    map["emailid"] = emailId;
-    return map;
+Employee.fromMap(Map map) {
+    firstName = map[firstName];
+    lastName = map[lastName];
+    mobileNo = map[mobileNo];
+    emailId = map[emailId];
   }
+  
 }
