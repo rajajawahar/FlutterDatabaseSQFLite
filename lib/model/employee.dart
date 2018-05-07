@@ -5,9 +5,11 @@ class Employee{
   String mobileNo;
   String emailId;
   
+  
+
   Employee(this.firstName, this.lastName,this.mobileNo,this.emailId);
   
-Employee.fromMap(Map map) {
+   Employee.fromMap(Map map) {
     firstName = map[firstName];
     lastName = map[lastName];
     mobileNo = map[mobileNo];
