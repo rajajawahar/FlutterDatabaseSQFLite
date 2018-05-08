@@ -28,7 +28,7 @@ class DBHelper {
     print("Created tables");
   }
 
-  Future<int> saveEmployee(Employee employee) async {
+  void saveEmployee(Employee employee) async {
     var dbClient = await db;
     await dbClient.transaction((txn) async {
       return await txn.rawInsert(

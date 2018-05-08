@@ -28,6 +28,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+ Employee employee = new Employee("", "", "", "");
   
 String firstname; 
 String lastname;
@@ -60,24 +62,28 @@ final formKey = new GlobalKey<FormState>();
           child: new Column(
             children: [
               new TextFormField(
+                keyboardType: TextInputType.text,
                 decoration: new InputDecoration(labelText: 'First Name'),
                 validator: (val) =>
                     val.length == 0 ?"Enter FirstName" : null,
                 onSaved: (val) => this.firstname = val,
               ),
               new TextFormField(
+                keyboardType: TextInputType.text,
                 decoration: new InputDecoration(labelText: 'Last Name'),
                 validator: (val) =>
                     val.length ==0 ? 'Enter LastName' : null,
                 onSaved: (val) => this.lastname = val,
               ),
               new TextFormField(
+                keyboardType: TextInputType.phone,
                 decoration: new InputDecoration(labelText: 'Mobile No'),
                 validator: (val) =>
                     val.length ==0 ? 'Enter Mobile No' : null,
                 onSaved: (val) => this.mobileno = val,
               ),
               new TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: new InputDecoration(labelText: 'Email Id'),
                 validator: (val) =>
                     val.length ==0 ? 'Enter Email Id' : null,
@@ -93,32 +99,13 @@ final formKey = new GlobalKey<FormState>();
     );
   }
   void _submit() {
-    
-    // if(firstname == null || firstname.isEmpty){
-    //   scaffoldKey.currentState
-    //     .showSnackBar(new SnackBar(content: new Text("Enter First Name")));
-    //   return;
-    // }
-    // if(lastname == null && lastname.isEmpty){
-    //    scaffoldKey.currentState
-    //     .showSnackBar(new SnackBar(content: new Text("Enter Last Name")));
-    //     return ;
-    // }
-    //  if(mobileno ==null && mobileno.isEmpty){
-    //    scaffoldKey.currentState
-    //     .showSnackBar(new SnackBar(content: new Text("Enter Mobile No")));
-    //     return ;
-    // }
-    // if(emailId == null && emailId.isEmpty){
-    //    scaffoldKey.currentState
-    //     .showSnackBar(new SnackBar(content: new Text("Enter Email Id")));
-    //     return ;
-    // }
-    var employee = Employee("Raja","Mohamed","9994267908","rajajawahr77@gmail.com");
+     if (this.formKey.currentState.validate()) {
+      formKey.currentState.save(); 
+     }
+    var employee = Employee(firstname,lastname,mobileno,emailId);
     var dbHelper = DBHelper();
-    dbHelper.getEmployees();
-    // dbHelper.saveEmployee(employee);
-    // _showSnackBar(employee.toString());
+    dbHelper.saveEmployee(employee);
+    _showSnackBar("Data saved successfully");
   }
 
   void _showSnackBar(String text) {
