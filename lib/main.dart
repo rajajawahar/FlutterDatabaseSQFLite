@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sqflitedatabase/database/dbhelper.dart';
 import 'package:sqflitedatabase/model/employee.dart';
+import 'package:sqflitedatabase/employeelist.dart';
 
 void main() => runApp(new MyApp());
 
@@ -42,6 +43,15 @@ final formKey = new GlobalKey<FormState>();
       key: scaffoldKey,
       appBar: new AppBar(
         title: new Text('Saving Employee'),
+        actions: <Widget>[
+            new IconButton(
+              icon: const Icon(Icons.view_list),
+              tooltip: 'Next choice',
+              onPressed: () {
+              navigateToEmployeeList();
+              },
+            ),
+          ]
       ),
       body: new Padding(
         padding: const EdgeInsets.all(16.0),
@@ -114,5 +124,12 @@ final formKey = new GlobalKey<FormState>();
   void _showSnackBar(String text) {
     scaffoldKey.currentState
         .showSnackBar(new SnackBar(content: new Text(text)));
+  }
+
+  void navigateToEmployeeList(){
+     Navigator.push(
+    context,
+    new MaterialPageRoute(builder: (context) => new MyEmployeeList()),
+  );
   }
 }

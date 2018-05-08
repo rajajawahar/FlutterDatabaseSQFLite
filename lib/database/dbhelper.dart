@@ -52,7 +52,7 @@ class DBHelper {
     });
   }
 
-  void getEmployees() async {
+  Future<List<Employee>> getEmployees() async {
     var dbClient = await db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM Employee');
     List<Employee> employees = new List();
@@ -60,5 +60,6 @@ class DBHelper {
       employees.add(new Employee(list[i]["firstname"], list[i]["lastname"], list[i]["mobileno"], list[i]["emailid"]));
     }
     print(employees.length);
+    return employees;
   }
 }

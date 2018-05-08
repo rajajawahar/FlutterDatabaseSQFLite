@@ -5,8 +5,6 @@ class Employee{
   String mobileNo;
   String emailId;
   
-  
-
   Employee(this.firstName, this.lastName,this.mobileNo,this.emailId);
   
    Employee.fromMap(Map map) {

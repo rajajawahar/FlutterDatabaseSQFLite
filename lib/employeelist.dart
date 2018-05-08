@@ -6,7 +6,8 @@ import 'package:sqflitedatabase/database/dbhelper.dart';
 
 Future<List<Employee>> fetchEmployeesFromDatabase() async {
   var dbHelper = DBHelper();
-  return dbHelper.getEmployees();
+  Future<List<Employee>> employees = dbHelper.getEmployees();
+  return employees;
 }
 
 class MyEmployeeList extends StatefulWidget {
