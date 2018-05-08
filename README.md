@@ -1,23 +1,13 @@
-# sqflitedatabase
-
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
-
-
 Sample application to save a data in SQFLite database.
 
 
-Install dependencies
+# Install dependencies
 
 cupertino_icons: ^0.1.0
 path_provider: '>=0.3.0'
 sqflite : any
 
-Create a database with name "test.db"
+# Create a database with name "test.db"
 
 ```
 initDb() async {
@@ -28,7 +18,7 @@ initDb() async {
 }
 ```
 
-Create a table named "Employee"
+# Create a table named "Employee"
 
 ```
 void _onCreate(Database db, int version) async {
@@ -39,7 +29,7 @@ void _onCreate(Database db, int version) async {
 }
 ```
 
-Saving a employee data in Table
+# Saving a employee data in Table
 
 ```
 void saveEmployee(Employee employee) async {
